@@ -90,7 +90,7 @@ angular.module('app', [])
     }
 
     $scope.updateText = function(id, text){
-      $http.put('/sticky/' + id + '/text', {"text":text}).success(function(){
+      $http.put('/sticky/' + id + '/text', {"text": text}).success(function(){
           console.log("Successful update text");
       });
     }
