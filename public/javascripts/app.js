@@ -91,8 +91,10 @@ angular.module('app', [])
     $scope.deleteAll = function(){
       $http.delete('/sticky').success(function(){
         $scope.stickies.forEach(function(sticky){
+          console.log("removing");
           $('#'+sticky.id).remove();
         })
+        $scope.stickies = [];
       })
     }
     // Run on start up
