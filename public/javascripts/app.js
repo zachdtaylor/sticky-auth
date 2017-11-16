@@ -23,16 +23,20 @@ angular.module('app', [])
       "<div class='inner_container'>"+
         "<textarea id=" + sticky.id+"text"+ " class='content'>" + sticky.text + "</textarea>"+
         "<button id="+sticky.id+"button" + ">Save</button>" + 
+        "<button id="+sticky.id+"delButton" + " class='deleteButton' >Delete</button>" + 
       "</div>");
 
       $('#'+sticky.id+"button").css({'visibility': 'hidden'});
+      $('#'+sticky.id+"delButton").css({'visibility': 'hidden'});
       $('#'+sticky.id+"button").click(function(){
 
         //Call PUT method for text here
         $('#'+sticky.id+"button").css({'visibility': 'hidden'});
+        $('#'+sticky.id+"delButton").css({'visibility': 'hidden'});
       });
       $('#'+sticky.id+"text").click(function(){
         $('#'+sticky.id+"button").css({'visibility': 'visible'}); // ON Edit enable save button
+        $('#'+sticky.id+"delButton").css({'visibility': 'visible'}); // ON Edit enable save button
       });
 
       // Set up position and size of sticky

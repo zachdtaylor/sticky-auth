@@ -41,3 +41,6 @@ textarea{
 button {
   float: right;
 }
+button.deleteButton {
+  float: left;
+}
