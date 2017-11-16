@@ -1,0 +1,29 @@
+body{
+  font-family:arial,sans-serif;
+  font-size:100%;
+  margin: 0;
+  padding: 0;
+  background:#666;
+  color:#fff;
+  height: 100%;
+  width: 100%;
+}
+hp{
+  font-size:100%;
+  font-weight:normal;
+}
+.container{
+  height: 100%;
+  width: 100%;
+}
+.sticky_note {
+  text-decoration:none;
+  color:#000;
+  background:#ffc;
+  display:block;
+  height:10em;
+  width:10em;
+  padding:1em;
+  margin:1em;
+  float:left;
+}
