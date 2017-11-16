@@ -65,6 +65,7 @@ angular.module('app', [])
     $scope.sendSticky = function(sticky){
       $http.post('/sticky', sticky).success(function(data){
         $scope.stickies.push(data);
+        $scope.create(data);
       });
     }
 
@@ -81,10 +82,21 @@ angular.module('app', [])
       });
     }
 
-    $scope.create(test);
+    $scope.addNew = function(){
+      var newSticky = {
+        text: "New Sticky",
+        height: 250,
+        width: 250,
+        top: 10,
+        left: 9
+      };
+      $scope.sendSticky(newSticky);
+    }
+
+    //$scope.create(test);
 
     // Run on start up
-    //$scope.getAll();
+    $scope.getAll();
   }
 ]);
 
