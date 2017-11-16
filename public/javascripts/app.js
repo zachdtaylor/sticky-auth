@@ -56,7 +56,7 @@ angular.module('app', [])
 
 
     // Functions accessing Server -----------------------------------------------------------------------------
-    $scope.getStickiesFromServer = function(){
+    $scope.getAll = function(){
       return $http.get('/sticky').success(function(data){
         console.log(data);
         angular.copy(data, $scope.stickies);
@@ -74,17 +74,8 @@ angular.module('app', [])
       });
     }
 
-    // $scope.updateText = function(sticky, id){
-    //   $http.put('/sticky/id/text', sticky.text)
-    // }
-
 
     // Page functions ----------------------------------------------------------------------------------------
-    $scope.getAll = function(){
-      $scope.getStickiesFromServer(new function(){
-        
-    });
-    }
 
     $scope.addNew = function(){
       var newSticky = {
@@ -97,8 +88,13 @@ angular.module('app', [])
       $scope.sendSticky(newSticky);
     }
 
-    //$scope.create(test);
-
+    $scope.deleteAll = function(){
+      $http.delete('/sticky').success(function(){
+        $scope.stickies.forEach(function(sticky){
+          $('#'+sticky.id).remove();
+        })
+      })
+    }
     // Run on start up
     $scope.getAll();
   }
