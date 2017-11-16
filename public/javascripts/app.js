@@ -60,7 +60,6 @@ angular.module('app', [])
       return $http.get('/sticky').success(function(data){
         console.log(data);
         angular.copy(data, $scope.stickies);
-        console.log($scope.stickies);
       });
     }
 
@@ -80,7 +79,7 @@ angular.module('app', [])
     $scope.getAll = function(){
       $scope.getStickiesFromServer();
       $scope.stickies.forEach(function(sticky){
-        create(sticky);
+        $scope.create(sticky);
       });
     }
 
