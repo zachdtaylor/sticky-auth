@@ -57,7 +57,7 @@ angular.module('app', [])
 
     // Functions accessing Server -----------------------------------------------------------------------------
     $scope.getStickiesFromServer = function(){
-      return $http.get('/stickies').success(function(data){
+      return $http.get('/sticky').success(function(data){
         console.log(data);
         angular.copy(data, $scope.stickies);
         console.log($scope.stickies);

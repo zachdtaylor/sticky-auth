@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Sticky = mongoose.model('Sticky');
 
-router.get('/stickies', function(req, res, next) {
+router.get('/sticky', function(req, res, next) {
   console.log("in get");
   Sticky.find(function(err, sticky) {
     console.log("in get again");
