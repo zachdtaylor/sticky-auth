@@ -52,13 +52,12 @@ angular.module('app', [])
       $('#'+sticky._id+"div").draggable({
         handle: "div.inner_container",
         stop: function(event, ui) {
-            //var Stoppos = $(this).position();
+            var Stoppos = $(this).position();
             //var height = $(this).height();
             //var width = $(this).width();
             //alert("Position: " + "\nTop: " + Stoppos.top + "\nLeft: " + Stoppos.left);
             //alert("Size: " + "\nWidth: " + width + "\nHeight: " + height);
-
-            // Call position save
+            $scope.updatePosition(sticky._id,Stoppos.top, Stoppos.left);
         }
       });
       
@@ -93,6 +92,12 @@ angular.module('app', [])
       $http.put('/sticky/' + id + '/text', {"text": text}).success(function(){
           console.log("Successful update text");
       });
+    }
+
+    $scope.updatePosition = function(id, top, left){
+      $http.put('/sticky/' + id + '/loc', {"top": top, "left": left}).success(function(){
+        console.log("Successful update of position");
+      })
     }
 
 

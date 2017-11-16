@@ -45,7 +45,7 @@ router.put('/sticky/:sticky/size', function(req, res, next) {
 });
 
 router.put('/sticky/:sticky/loc', function(req, res, next) {
-  req.sticky.changeLoc(req.top, req.left, function(err, sticky) {
+  req.sticky.changeLoc(req.body.top, req.body.left, function(err, sticky) {
     if (err) { return next(err); }
     res.json(sticky);
   });
