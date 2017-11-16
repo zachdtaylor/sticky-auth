@@ -64,7 +64,7 @@ router.delete('/sticky/:sticky', function(req, res) {
 });
 
 router.delete('/sticky', function(req, res, next) {
-  Sticky.remove(function(){
+  Sticky.remove(function(err){
     if(err) {return next(err)}
     res.sendStatus(200);
   });
