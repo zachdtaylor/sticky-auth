@@ -92,7 +92,7 @@ angular.module('app', [])
       $http.delete('/sticky').success(function(){
         $scope.stickies.forEach(function(sticky){
           console.log("removing");
-          $('#'+sticky.id).remove();
+          $('#'+sticky.id +"div").remove();
         })
         $scope.stickies = [];
       })
