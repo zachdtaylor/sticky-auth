@@ -76,7 +76,7 @@ angular.module('app', [])
 
     // Page functions ----------------------------------------------------------------------------------------
     $scope.getAll = function(){
-      getStickiesFromServer();
+      $scope.getStickiesFromServer();
       stickies.each(function(sticky){
         create(sticky);
       });
