@@ -22,6 +22,7 @@ angular.module('app', [])
       $('.container').append("<div id=" + sticky.id +"div"+ " class='sticky_note'>"+
       "<div class='inner_container'>"+
         "<textarea id=" + sticky.id+"text"+ " class='content'>" + sticky.text + "</textarea>"+
+        "</div>" +
         "<button id="+sticky.id+"button" + ">Save</button>" + 
         "<button id="+sticky.id+"delButton" + " class='deleteButton' >Delete</button>" + 
       "</div>");
