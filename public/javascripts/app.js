@@ -80,7 +80,7 @@ angular.module('app', [])
     }
 
     $scope.deleteSticky = function(sticky, callback){
-      $http.delete('/sticky'/ + sticky._id).success(callback);
+      $http.delete('/sticky/' + sticky._id).success(callback);
     }
 
     $scope.sendSticky = function(sticky){
