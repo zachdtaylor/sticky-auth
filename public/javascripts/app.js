@@ -79,6 +79,7 @@ angular.module('app', [])
     $scope.getAll = function(){
       $scope.getStickiesFromServer();
       $scope.stickies.forEach(function(sticky){
+        console.log(sticky);
         $scope.create(sticky);
       });
     }
