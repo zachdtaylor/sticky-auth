@@ -39,6 +39,13 @@ angular.module('app', [])
         $('#'+sticky._id+"button").css({'visibility': 'visible'}); // ON Edit enable save button
         $('#'+sticky._id+"delButton").css({'visibility': 'visible'}); // ON Edit enable save button
       });
+      $('#'+sticky._id+"delButton").click(function(){
+          $scope.deleteSticky(sticky, function(){
+            ('#'+sticky._id+"delButton").remove();
+            var index = $scope.stickies.indexOf(sticky);
+            if(index>=0)$scope.stickies = $scope.stickies.splice(index, 1);
+          });
+      });
 
       // Set up position and size of sticky
       $('#'+sticky._id+"div").css({'top': sticky.top, 'left' :sticky.left});
@@ -70,6 +77,10 @@ angular.module('app', [])
           $scope.create(sticky);
         });
       });
+    }
+
+    $scope.deleteSticky = function(sticky, callback){
+      $http.delete('/sticky'/ + sticky._id).success(callback);
     }
 
     $scope.sendSticky = function(sticky){
