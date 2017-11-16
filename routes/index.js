@@ -52,7 +52,7 @@ router.put('/sticky/:sticky/loc', function(req, res, next) {
 });
 
 router.put('/sticky/:sticky/text', function(req, res, next) {
-  req.sticky.changeText(req.text, function(err, sticky) {
+  req.sticky.changeText(req.body, function(err, sticky) {
     if (err) { return next(err); }
     res.json(sticky);
   });

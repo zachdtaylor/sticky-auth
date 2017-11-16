@@ -30,8 +30,7 @@ angular.module('app', [])
       $('#'+sticky._id+"button").css({'visibility': 'hidden'});
       $('#'+sticky._id+"delButton").css({'visibility': 'hidden'});
       $('#'+sticky._id+"button").click(function(){
-
-        //Call PUT method for text here
+        $scope.updateText(sticky._id, $('#'+sticky._id+"text".text()));
         $('#'+sticky._id+"button").css({'visibility': 'hidden'});
         $('#'+sticky._id+"delButton").css({'visibility': 'hidden'});
       });
@@ -90,8 +89,14 @@ angular.module('app', [])
       });
     }
 
+    $scope.updateText = function(id, text){
+      $http.put('/sticky/' + id + '/text', text).success(function(){
+          console.log("Successful update text");
+      });
+    }
 
-    // Page functions ----------------------------------------------------------------------------------------
+
+    // Page button functions ----------------------------------------------------------------------------------------
 
     $scope.addNew = function(){
       var newSticky = {
@@ -113,6 +118,8 @@ angular.module('app', [])
         $scope.stickies = [];
       })
     }
+
+
     // Run on start up
     $scope.getAll();
   }
