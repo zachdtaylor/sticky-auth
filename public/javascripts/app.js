@@ -30,7 +30,6 @@ angular.module('app', [])
       $('#'+sticky._id+"button").css({'visibility': 'hidden'});
       $('#'+sticky._id+"delButton").css({'visibility': 'hidden'});
       $('#'+sticky._id+"button").click(function(){
-        console.log("Text to save:" + $('#'+sticky._id+"text").val());
         $scope.updateText(sticky._id, $('#'+sticky._id+"text").val());
         $('#'+sticky._id+"button").css({'visibility': 'hidden'});
         $('#'+sticky._id+"delButton").css({'visibility': 'hidden'});
