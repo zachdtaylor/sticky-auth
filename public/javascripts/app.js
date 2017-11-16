@@ -55,7 +55,6 @@ angular.module('app', [])
             var Stoppos = $(this).position();
             //var height = $(this).height();
             //var width = $(this).width();
-            //alert("Position: " + "\nTop: " + Stoppos.top + "\nLeft: " + Stoppos.left);
             //alert("Size: " + "\nWidth: " + width + "\nHeight: " + height);
             $scope.updatePosition(sticky._id,Stoppos.top, Stoppos.left);
         }
@@ -97,6 +96,13 @@ angular.module('app', [])
     $scope.updatePosition = function(id, top, left){
       $http.put('/sticky/' + id + '/loc', {"top": top, "left": left}).success(function(){
         console.log("Successful update of position");
+      })
+    }
+    
+
+    $scope.updateSize = function(id, height, width){
+      $http.put('/sticky/' + id + '/size', {"height": height, "width": width}).success(function(){
+        console.log("Successful update of size");
       })
     }
 

@@ -38,7 +38,7 @@ router.put('/sticky/:sticky/color', function(req, res, next) {
 });
 
 router.put('/sticky/:sticky/size', function(req, res, next) {
-  req.sticky.changeSize(req.height, req.width, function(err, sticky) {
+  req.sticky.changeSize(req.body.height, req.body.width, function(err, sticky) {
     if (err) { return next(err); }
     res.json(sticky);
   });
