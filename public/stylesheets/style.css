@@ -12,6 +12,8 @@ textarea{
   font-size:100%;
   font-weight:normal;
   width: 97%;
+  height: 95%;
+  margin-top: 5px;
   background-color: inherit;
   border: 0px;
   resize: none;
