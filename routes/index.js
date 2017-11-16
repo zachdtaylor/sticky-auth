@@ -4,8 +4,9 @@ var mongoose = require('mongoose');
 var Sticky = mongoose.model('Sticky');
 
 router.get('/sticky', function(req, res, next) {
+  console.log("in get");
   Sticky.find(function(err, sticky) {
-    console.log("in get");
+    console.log("in get again");
     if (err) { return next(err); }
     res.json(sticky);
   });
