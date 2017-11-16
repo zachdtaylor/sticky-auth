@@ -19,31 +19,31 @@ angular.module('app', [])
 
     $scope.create = function(sticky){
 
-      $('.container').append("<div id=" + sticky.id +"div"+ " class='sticky_note'>"+
+      $('.container').append("<div id=" + sticky._id +"div"+ " class='sticky_note'>"+
       "<div class='inner_container'>"+
-        "<textarea id=" + sticky.id+"text"+ " class='content'>" + sticky.text + "</textarea>"+
+        "<textarea id=" + sticky._id+"text"+ " class='content'>" + sticky.text + "</textarea>"+
         "</div>" +
-        "<button id="+sticky.id+"button" + ">Save</button>" + 
-        "<button id="+sticky.id+"delButton" + " class='deleteButton' >Delete</button>" + 
+        "<button id="+sticky._id+"button" + ">Save</button>" + 
+        "<button id="+sticky._id+"delButton" + " class='deleteButton' >Delete</button>" + 
       "</div>");
 
-      $('#'+sticky.id+"button").css({'visibility': 'hidden'});
-      $('#'+sticky.id+"delButton").css({'visibility': 'hidden'});
-      $('#'+sticky.id+"button").click(function(){
+      $('#'+sticky._id+"button").css({'visibility': 'hidden'});
+      $('#'+sticky._id+"delButton").css({'visibility': 'hidden'});
+      $('#'+sticky._id+"button").click(function(){
 
         //Call PUT method for text here
-        $('#'+sticky.id+"button").css({'visibility': 'hidden'});
-        $('#'+sticky.id+"delButton").css({'visibility': 'hidden'});
+        $('#'+sticky._id+"button").css({'visibility': 'hidden'});
+        $('#'+sticky._id+"delButton").css({'visibility': 'hidden'});
       });
-      $('#'+sticky.id+"text").click(function(){
-        $('#'+sticky.id+"button").css({'visibility': 'visible'}); // ON Edit enable save button
-        $('#'+sticky.id+"delButton").css({'visibility': 'visible'}); // ON Edit enable save button
+      $('#'+sticky._id+"text").click(function(){
+        $('#'+sticky._id+"button").css({'visibility': 'visible'}); // ON Edit enable save button
+        $('#'+sticky._id+"delButton").css({'visibility': 'visible'}); // ON Edit enable save button
       });
 
       // Set up position and size of sticky
-      $('#'+sticky.id+"div").css({'top': sticky.top, 'left' :sticky.left});
-      $('#'+sticky.id+"div").css({'height': sticky.height, 'width': sticky.width})   
-      $('#'+sticky.id+"div").draggable({
+      $('#'+sticky._id+"div").css({'top': sticky.top, 'left' :sticky.left});
+      $('#'+sticky._id+"div").css({'height': sticky.height, 'width': sticky.width})  
+      $('#'+sticky._id+"div").draggable({
         handle: "div.inner_container",
         stop: function(event, ui) {
             //var Stoppos = $(this).position();
@@ -97,7 +97,7 @@ angular.module('app', [])
       $http.delete('/sticky').success(function(){
         $scope.stickies.forEach(function(sticky){
           console.log("removing");
-          $('#'+sticky.id +"div").remove();
+          $('#'+sticky._id +"div").remove();
         })
         $scope.stickies = [];
       })
