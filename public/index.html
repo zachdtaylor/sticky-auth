@@ -1,29 +1,17 @@
 <html>
   <head>
-    <link rel=stylesheet href="style.css">
+    <link rel=stylesheet href="stylesheets/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="app.js"></script>
-    <script>
-      $(document).ready(function(){
-        $('.sticky_note').draggable({
-          stop: function(event, ui) {
-              var Stoppos = $(this).position();
-              //alert("Position: " + "\nTop: " + Stoppos.top + "\nLeft: " + Stoppos.left);
-          }
-        });
-        //$('#test').css({'top': -4, 'left' :1194})
-      })
-      </script>
+    <script src="javascripts/app.js"></script>
   </head>
-  <body ng-app="stickyNotes" ng-controller="stickyBoard">
+  <body ng-app="app" ng-controller="MainCtrl">
     <div class="container">
-      <div id="test" class="sticky_note">
+      <!--<div id="test" class="sticky_note">
+        <div class="inner_container">
           <p class="content">Homework:</p>
-      </div>
-      <div class="sticky_note">
-          <p class="content">Bugs to fix:</p>
+        </div>-->
       </div>
     </div>
   </body>
