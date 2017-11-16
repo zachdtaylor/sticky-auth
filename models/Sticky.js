@@ -6,7 +6,7 @@ var StickySchema = new mongoose.Schema({
     left: Number,
     color: {type: String, default: '#ffc'},
     height: Number,
-    width: Number,
+    width: Number
 });
 
 StickySchema.methods.changeColor = function(color, cb) {
