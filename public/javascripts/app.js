@@ -84,7 +84,7 @@ angular.module('app', [])
     $scope.create(test);
 
     // Run on start up
-    //$scope.getAll();
+    $scope.getAll();
   }
 ]);
 

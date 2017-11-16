@@ -3,16 +3,17 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Sticky = mongoose.model('Sticky');
 
-router.post('/sticky', function(req, res, next) {
-  var sticky = new Sticky(req.body);
-  sticky.save(function(err, sticky) {
+router.get('/sticky', function(req, res, next) {
+  Sticky.find(function(err, sticky) {
+    console.log("in get");
     if (err) { return next(err); }
     res.json(sticky);
   });
 });
 
-router.get('/sticky', function(req, res, next) {
-  Sticky.find(function(err, sticky) {
+router.post('/sticky', function(req, res, next) {
+  var sticky = new Sticky(req.body);
+  sticky.save(function(err, sticky) {
     if (err) { return next(err); }
     res.json(sticky);
   });
