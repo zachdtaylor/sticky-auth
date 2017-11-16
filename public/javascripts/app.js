@@ -41,7 +41,7 @@ angular.module('app', [])
       });
       $('#'+sticky._id+"delButton").click(function(){
           $scope.deleteSticky(sticky, function(){
-            ('#'+sticky._id+"delButton").remove();
+            $('#'+sticky._id+"delButton").remove();
             var index = $scope.stickies.indexOf(sticky);
             if(index>=0)$scope.stickies = $scope.stickies.splice(index, 1);
           });
