@@ -62,7 +62,9 @@ textarea{
 }
 button {
   float: right;
+  margin-right: 15px;
 }
 button.deleteButton {
   float: left;
+  margin-left: 15px;
 }
