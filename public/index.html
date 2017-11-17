@@ -8,13 +8,22 @@
   </head>
   <body ng-app="app" ng-controller="MainCtrl">
     <div class="container" >
-      <button style="margin: 10px" ng-click="addNew()">Add New</button>
-      <button style="margin: 10px" ng-click="deleteAll()">Delete All</button>
-      <!--<div id="test" class="sticky_note">
-        <div class="inner_container">
-          <p class="content">Homework:</p>
-        </div>-->
+
+      <div class='sticky_note' style="top: 10; left: 11; width:250; height: 250; background: #F7C331;">
+      <div class='inner_container_menu'>
+        <textarea>Sticky Notes!
+
+Move: drag top of note
+Resize: bottom right corner
+          
+Options:</textarea>
+          <div class='footer'>
+            <button style="float: left; margin-left: 15px;padding: 10px;" ng-click="addNew()">Add New</button>
+            <button style="float: right; margin-right: 15px; padding: 10px;" ng-click="deleteAll()">Delete All</button>
+          </div>
+        </div> 
       </div>
+
     </div>
   </body>
 </html>

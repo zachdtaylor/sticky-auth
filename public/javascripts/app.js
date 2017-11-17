@@ -45,8 +45,7 @@ angular.module('app', [])
       $('#'+sticky._id+"div").css({'top': sticky.top, 'left' :sticky.left});
       $('#'+sticky._id+"div").css({'height': sticky.height, 'width': sticky.width})  
       $('#'+sticky._id+"div").draggable({
-        handle: "textarea.content",
-        cancel: '',
+        handle: "div.inner_container",
         stop: function(event, ui) {
             var Stoppos = $(this).position();
             //var height = $(this).height();
@@ -110,8 +109,8 @@ angular.module('app', [])
         text: "New Sticky",
         height: 250,
         width: 250,
-        top: 10,
-        left: 9
+        top: 500,
+        left: 500
       };
       $scope.sendSticky(newSticky);
     }
@@ -125,8 +124,6 @@ angular.module('app', [])
         $scope.stickies = [];
       })
     }
-
-
     // Run on start up
     $scope.getAll();
   }
