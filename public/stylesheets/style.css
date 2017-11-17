@@ -22,8 +22,10 @@ textarea{
 .container{
   height: 100%;
   width: 100%;
+  position: absolute;
 }
 .sticky_note {
+  position: absolute;
   text-decoration:none;
   color:#000;
   background:#ffc;
