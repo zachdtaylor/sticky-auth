@@ -4,7 +4,7 @@ angular.module('app', [])
   function($scope,$http){
 
     $scope.stickies = [];
-    $scope.colors = ['#ffc', '#A4D555', '#FF5992', '#99D3DF'];
+    $scope.colors = ['#99D3DF', '#ffc', '#A4D555', '#FF5992' ];
 
     // Functions on Stickies ------------------------------------------------------------------------------
 
@@ -115,12 +115,14 @@ angular.module('app', [])
         left: 11,
         color: $scope.colors[$scope.currentColor]
       };
-      if($scope.currentColor == $scope.currentColor.length){
+
+      if($scope.currentColor == 3){
         $scope.currentColor = 0;
       }
       else{
         $scope.currentColor = $scope.currentColor+1;
       }
+
       $scope.sendSticky(newSticky);
     }
 
