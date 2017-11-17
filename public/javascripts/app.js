@@ -4,6 +4,7 @@ angular.module('app', [])
   function($scope,$http){
 
     $scope.stickies = [];
+    $scope.colors = ['#4CDEF5'];
 
     // Functions on Stickies ------------------------------------------------------------------------------
 
@@ -43,7 +44,8 @@ angular.module('app', [])
 
       // Set up position and size of sticky
       $('#'+sticky._id+"div").css({'top': sticky.top, 'left' :sticky.left});
-      $('#'+sticky._id+"div").css({'height': sticky.height, 'width': sticky.width})  
+      $('#'+sticky._id+"div").css({'height': sticky.height, 'width': sticky.width}) 
+      $('#'+sticky._id+"div").css({'background': sticky.color}) 
       $('#'+sticky._id+"div").draggable({
         handle: "div.inner_container",
         stop: function(event, ui) {
@@ -109,8 +111,9 @@ angular.module('app', [])
         text: "New Sticky",
         height: 250,
         width: 250,
-        top: 500,
-        left: 500
+        top: 284,
+        left: 11,
+        color: $scope.colors[0]
       };
       $scope.sendSticky(newSticky);
     }
