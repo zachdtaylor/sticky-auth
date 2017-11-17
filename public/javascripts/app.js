@@ -113,7 +113,7 @@ angular.module('app', [])
         width: 250,
         top: 284,
         left: 11,
-        color: $scope.colors[currentColor]
+        color: $scope.colors[$scope.currentColor]
       };
       if($scope.currentColor == $scope.currentColor.length){
         $scope.currentColor = 0;
