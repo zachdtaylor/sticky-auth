@@ -5,16 +5,6 @@ angular.module('app', [])
 
     $scope.stickies = [];
 
-    var test = {
-      id: "1",
-      text: "Our Sticky Note Page :D",
-      height: 250,
-      width: 250,
-      top: 10,
-      left: 9
-    };
-
-
     // Functions on Stickies ------------------------------------------------------------------------------
 
     $scope.create = function(sticky){
@@ -44,6 +34,9 @@ angular.module('app', [])
             var index = $scope.stickies.indexOf(sticky);
             if(index>=0)$scope.stickies = $scope.stickies.splice(index, 1);
           });
+      });
+      $('#'+sticky._id+"div").resize(function(){
+          $scope.updateSize(sticky._id, $('#'+sticky._id+"div").height(), $('#'+sticky._id+"div").width());
       });
 
       // Set up position and size of sticky
