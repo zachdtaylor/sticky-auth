@@ -35,7 +35,7 @@ angular.module('app', [])
             if(index>=0)$scope.stickies = $scope.stickies.splice(index, 1);
           });
       });
-      $('#'+sticky._id+"div").resize(function(){
+      $('#'+sticky._id+"div").mouseup(function(){
           $scope.updateSize(sticky._id, $('#'+sticky._id+"div").height(), $('#'+sticky._id+"div").width());
       });
 
