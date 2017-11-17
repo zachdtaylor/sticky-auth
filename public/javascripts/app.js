@@ -45,7 +45,8 @@ angular.module('app', [])
       $('#'+sticky._id+"div").css({'top': sticky.top, 'left' :sticky.left});
       $('#'+sticky._id+"div").css({'height': sticky.height, 'width': sticky.width})  
       $('#'+sticky._id+"div").draggable({
-        handle: "div.inner_container",
+        handle: "textarea.content",
+        cancel: '',
         stop: function(event, ui) {
             var Stoppos = $(this).position();
             //var height = $(this).height();
