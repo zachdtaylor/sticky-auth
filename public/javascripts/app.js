@@ -1,7 +1,7 @@
 angular.module('app', [])
 .controller('MainCtrl', [
-  '$scope','$http',
-  function($scope,$http){
+  '$scope','$http', '$window',
+  function($scope,$http, $window){
 
     $scope.stickies = [];
     $scope.colors = ['#99D3DF', '#ffc', '#A4D555', '#FF5992' ];
@@ -136,6 +136,11 @@ angular.module('app', [])
       })
     }
     
+    $scope.logOut = function(){
+      $http.get('/logout').success(function(){
+        $window.location.href="/login";
+      });
+    };
     // Run on start up
     $scope.getAll();
     

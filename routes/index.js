@@ -8,75 +8,100 @@ var users = require('../controllers/users_controller');
 var path = require('path');
 
 router.get('/sticky', function(req, res, next) {
-  //console.log("in get");
-  Sticky.find({"username" : req.session.username}, function(err, sticky) {
-    //console.log("in get again");
-    if (err) { return next(err); }
-    res.json(sticky);
-  });
-});
-
-router.post('/sticky', function(req, res, next) {
-  var sticky = new Sticky(req.body);
-  sticky.setUsername(req.session.username, function(err, sticky){
-    if(err) {return next(err); }
-    sticky.save(function(err, sticky) {
+  if(verifyUser(req,res)){
+    //console.log("in get");
+    Sticky.find({"username" : req.session.username}, function(err, sticky) {
+      //console.log("in get again");
       if (err) { return next(err); }
       res.json(sticky);
     });
-  });
+  }
+});
+
+router.post('/sticky', function(req, res, next) {
+  if(verifyUser(req,res)){
+    var sticky = new Sticky(req.body);
+    sticky.setUsername(req.session.username, function(err, sticky){
+      if(err) {return next(err); }
+      sticky.save(function(err, sticky) {
+        if (err) { return next(err); }
+        res.json(sticky);
+      });
+    });
+  }
 });
 
 router.param('sticky', function(req, res, next, id) {
-  var query = Sticky.findById(id);
-  query.exec(function(err, sticky) {
-    if (err) { return next(err); }
-    if (!sticky) { return next(new Error("can't find sticky")); }
-    req.sticky = sticky;
-    return next();
-  });
+  if(verifyUser(req,res)){
+    var query = Sticky.findById(id);
+    query.exec(function(err, sticky) {
+      if (err) { return next(err); }
+      if (!sticky) { return next(new Error("can't find sticky")); }
+      req.sticky = sticky;
+      return next();
+    });
+  }
 });
 
 router.put('/sticky/:sticky/color', function(req, res, next) {
+  if(verifyUser(req,res)){
   req.sticky.changeColor(req.color, function(err, sticky) {
     if (err) { return next(err); }
     res.json(sticky);
-  });
+   });
+  }
 });
 
 router.put('/sticky/:sticky/size', function(req, res, next) {
-  req.sticky.changeSize(req.body.height, req.body.width, function(err, sticky) {
-    if (err) { return next(err); }
-    res.json(sticky);
-  });
+  if(verifyUser(req,res)){
+    req.sticky.changeSize(req.body.height, req.body.width, function(err, sticky) {
+      if (err) { return next(err); }
+      res.json(sticky);
+    });
+  }
 });
 
 router.put('/sticky/:sticky/loc', function(req, res, next) {
-  req.sticky.changeLoc(req.body.top, req.body.left, function(err, sticky) {
-    if (err) { return next(err); }
-    res.json(sticky);
-  });
+  if(verifyUser(req,res)){
+    req.sticky.changeLoc(req.body.top, req.body.left, function(err, sticky) {
+      if (err) { return next(err); }
+      res.json(sticky);
+    });
+  }
 });
 
 router.put('/sticky/:sticky/text', function(req, res, next) {
-  req.sticky.changeText(req.body.text, function(err, sticky) {
-    if (err) { return next(err); }
-    res.json(sticky);
-  });
+  if(verifyUser(req,res)){
+    req.sticky.changeText(req.body.text, function(err, sticky) {
+      if (err) { return next(err); }
+      res.json(sticky);
+    });
+  }
 });
 
 router.delete('/sticky/:sticky', function(req, res) {
-  req.sticky.remove();
-  res.sendStatus(200);
+  if(verifyUser(req,res)){
+    req.sticky.remove();
+    res.sendStatus(200);
+  }
 });
 
 router.delete('/sticky', function(req, res, next) {
-  Sticky.remove({"username" : req.session.username},function(err){
-    if(err) {return next(err)}
-    res.sendStatus(200);
-  });
-  
+  if(verifyUser(req,res)){
+    Sticky.remove({"username" : req.session.username},function(err){
+      if(err) {return next(err)}
+      res.sendStatus(200);
+    });
+  } 
 });
+
+var verifyUser = function(req, res) {
+  if(!req.session.user){
+    res.sendFile(path.join(process.cwd(), 'public/auth.html'));
+    return false;
+  }
+  return true;
+}
 
 //console.log("before / Route");
 router.get('/', function(req, res){
