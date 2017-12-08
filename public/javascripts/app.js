@@ -147,13 +147,14 @@ angular.module('app', [])
  //loginpage functions
 
   $scope.logIn = function(){
-    console.log("here");
+   
     if($('#email').val()=='')return;
     if($('#password').val()=='')return;
     $http.post('/login', {
       "username": $('#email').val(),
       "password": $('#password').val()
     }).success(function(){
+      console.log("success");
       $window.location.href = "/";
     })
 

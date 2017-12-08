@@ -18,12 +18,14 @@ exports.signup = function(req, res){
     console.log(err);
     if (err){
       res.session.error = err;
-      res.redirect('/signup');
+      res.status(500);
+      res.end();
     } else {
       req.session.user = user.id;
       req.session.username = user.username;
       req.session.msg = 'Authenticated as ' + user.username;
-      res.status(500);
+      res.status(200);
+      res.end();
     }
   });
 };
@@ -42,6 +44,7 @@ exports.login = function(req, res){
         req.session.username = user.username;
         req.session.msg = 'Authenticated as ' + user.username;
         res.status(200);
+        res.end();
       });
     }else{
       err = 'Authentication failed.';
