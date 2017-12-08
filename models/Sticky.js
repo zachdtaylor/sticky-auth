@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var StickySchema = new mongoose.Schema({
+    username: String,
     text: String,
     top: Number,
     left: Number,
@@ -8,6 +9,11 @@ var StickySchema = new mongoose.Schema({
     height: Number,
     width: Number
 });
+
+StickySchema.methods.setUsername = function(username, cb) {
+  this.username = username;
+  this.save(cb);
+}
 
 StickySchema.methods.changeColor = function(color, cb) {
     this.color = color;

@@ -9,7 +9,7 @@ var path = require('path');
 
 router.get('/sticky', function(req, res, next) {
   //console.log("in get");
-  Sticky.find(function(err, sticky) {
+  Sticky.find({"username" : req.session.username}, function(err, sticky) {
     //console.log("in get again");
     if (err) { return next(err); }
     res.json(sticky);
@@ -18,9 +18,12 @@ router.get('/sticky', function(req, res, next) {
 
 router.post('/sticky', function(req, res, next) {
   var sticky = new Sticky(req.body);
-  sticky.save(function(err, sticky) {
-    if (err) { return next(err); }
-    res.json(sticky);
+  sticky.setUsername(req.session.username, function(err, sticky){
+    if(err) {return next(err); }
+    sticky.save(function(err, sticky) {
+      if (err) { return next(err); }
+      res.json(sticky);
+    });
   });
 });
 
@@ -68,7 +71,7 @@ router.delete('/sticky/:sticky', function(req, res) {
 });
 
 router.delete('/sticky', function(req, res, next) {
-  Sticky.remove(function(err){
+  Sticky.remove({"username" : req.session.username},function(err){
     if(err) {return next(err)}
     res.sendStatus(200);
   });
