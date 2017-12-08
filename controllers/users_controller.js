@@ -2,8 +2,10 @@ var crypto = require('crypto');
 var mongoose = require('mongoose'),
     User = mongoose.model('User');
 function hashPW(pwd){
+  return pwd;
+  console.log("In hash");
   return crypto.createHash('sha256').update(pwd).
-         digest('base64').toString();
+    digest('base64').toString();
 }
 exports.signup = function(req, res){
   console.log("Begin exports.signup");
@@ -21,11 +23,12 @@ exports.signup = function(req, res){
       req.session.user = user.id;
       req.session.username = user.username;
       req.session.msg = 'Authenticated as ' + user.username;
-      res.redirect('/');
+      res.status(500);
     }
   });
 };
 exports.login = function(req, res){
+  console.log("Username: " + req.body.username);
   User.findOne({ username: req.body.username })
   .exec(function(err, user) {
     if (!user){
@@ -38,7 +41,7 @@ exports.login = function(req, res){
         req.session.user = user.id;
         req.session.username = user.username;
         req.session.msg = 'Authenticated as ' + user.username;
-        res.redirect('/');
+        res.status(200);
       });
     }else{
       err = 'Authentication failed.';

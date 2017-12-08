@@ -1,14 +1,16 @@
 var express = require('express');
+var crypto = require('crypto');
 var router = express.Router();
 var mongoose = require('mongoose');
 var expressSession = require('express-session');
 var Sticky = mongoose.model('Sticky');
 var users = require('../controllers/users_controller');
+var path = require('path');
 
 router.get('/sticky', function(req, res, next) {
-  console.log("in get");
+  //console.log("in get");
   Sticky.find(function(err, sticky) {
-    console.log("in get again");
+    //console.log("in get again");
     if (err) { return next(err); }
     res.json(sticky);
   });
@@ -73,16 +75,14 @@ router.delete('/sticky', function(req, res, next) {
   
 });
 
-console.log("before / Route");
+//console.log("before / Route");
 router.get('/', function(req, res){
     console.log("/ Route");
 //    console.log(req);
     console.log(req.session);
     if (req.session.user) {
       console.log("/ Route if user");
-      res.render('index', {username: req.session.username,
-                           msg:req.session.msg,
-                           color:req.session.color});
+      res.sendFile(path.join(process.cwd(), 'public/index.html'));
     } else {
       console.log("/ Route else user");
       req.session.msg = 'Access denied!';
@@ -94,13 +94,14 @@ router.get('/signup', function(req, res){
     if(req.session.user){
       res.redirect('/');
     }
+    else res.redirect('/login');
 });
 router.get('/login',  function(req, res){
     console.log("/login Route");
     if(req.session.user){
-      res.redirect('/');
+      res.sendFile(path.join(process.cwd(), 'public/index.html'));
     }
-    res.sendFile('auth.html');
+    res.sendFile(path.join(process.cwd(), 'public/auth.html'));
 });
 router.get('/logout', function(req, res){
     console.log("/logout Route");
@@ -110,5 +111,9 @@ router.get('/logout', function(req, res){
   });
 router.post('/signup', users.signup);
 router.post('/login', users.login);
+
+router.get('/index.html', function(req,res){
+  res.redirect("/");
+})
 
 module.exports = router;

@@ -115,6 +115,10 @@ textarea{
   grid-area: footer;
 }
 button {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(0,0,0,0.2);
+  border-radius: 20px;
   float: right;
   margin-right: 15px;
 }

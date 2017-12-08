@@ -135,9 +135,42 @@ angular.module('app', [])
         $scope.stickies = [];
       })
     }
+    
     // Run on start up
     $scope.getAll();
+    
   }
+])
+.controller('LoginCtrl', [
+  '$scope','$http', '$window',
+  function($scope,$http,$window){
+ //loginpage functions
+
+  $scope.logIn = function(){
+    console.log("here");
+    if($('#email').val()=='')return;
+    if($('#password').val()=='')return;
+    $http.post('/login', {
+      "username": $('#email').val(),
+      "password": $('#password').val()
+    }).success(function(){
+      $window.location.href = "/";
+    })
+
+  }
+
+  $scope.signUp = function(){
+    if($('#email').val()=='')return;
+    if($('#password').val()=='')return;
+    $http.post('/signUp', {
+      "username": $('#email').val(),
+      "password": $('#password').val()
+    }).success(function(){
+      $window.location.href = "/";
+    })
+  }
+
+}
 ]);
 
 

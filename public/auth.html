@@ -1,23 +1,24 @@
 <html>
 <head>
   <title>Stickies Login</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <link rel="stylesheet" href="stylesheets/style.css">
-
+  <script src="javascripts/app.js"></script>
 </head>
-<body >
+<body ng-app="app" ng-controller="LoginCtrl">
     <div class="container">
       <div class='sticky_note' style="resize: none; top: 20%; left: 30%; width: 600; height: 400; background: #ffc;">
       <div class='inner_container_login'>
         <textarea class="login_title" >Sticky Notes!</textarea>
         <div class="login_inputs">
-          <input class="login_input_field" type="Username" placeholder="email"></input>
-          <input class="login_input_field"type="Password" placeholder="password"></input>
+          <input id="email" class="login_input_field" type="Username" placeholder="email"></input>
+          <input id="password" class="login_input_field"type="Password" placeholder="password"></input>
          </div>
         <div class="login_footer">
-          <button class="login_buttons" >LOG IN</button>
-          <button class="login_buttons" >REGISTER</button>
+          <button id="login_button" class="login_buttons" ng-click="logIn()">LOG IN</button>
+          <button id="register_button" class="login_buttons" ng-click="signUp()">REGISTER</button>
         </div>
       </div> 
     </div>
