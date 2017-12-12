@@ -133,6 +133,12 @@ button:hover .highlight {
   opacity: 1;
 }
 
+button:hover {
+  color: #fff;
+  cursor: pointer;
+  background-color: #a8a8a8;
+}
+
 button.deleteButton {
   float: left;
   margin-left: 15px;
