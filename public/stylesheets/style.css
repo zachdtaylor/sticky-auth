@@ -111,11 +111,14 @@ textarea{
     "text"
     "footer";
 }
-.footer {
+.footer_menu{
   grid-area: footer;
   display: flex;
   flex-direction: column;
   padding: 0 69px;
+}
+.footer {
+  grid-area: footer;
 }
 button {
   border-style: solid;
