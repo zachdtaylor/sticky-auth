@@ -162,6 +162,9 @@ angular.module('app', [])
       console.log("success");
       $window.location.href = "/";
     })
+    .error(function(){
+      $('#error').text("Username or Password Incorrect");
+    })
 
   }
 
@@ -173,6 +176,9 @@ angular.module('app', [])
       "password": $('#password').val()
     }).success(function(){
       $window.location.href = "/";
+    })
+    .error(function(){
+      $('#error').text("Username Not Available");
     })
   }
 

@@ -13,12 +13,11 @@ exports.signup = function(req, res){
   console.log("after new user exports.signup");
   user.set('hashed_password', hashPW(req.body.password));
   console.log("after hashing user exports.signup");
-  user.save(function(err) {
+  user.save( function(err, user) {
     console.log("In exports.signup");
     console.log(err);
     if (err){
-      res.session.error = err;
-      res.status(500);
+      res.status(403);
       res.end();
     } else {
       req.session.user = user.id;
@@ -48,11 +47,13 @@ exports.login = function(req, res){
       });
     }else{
       err = 'Authentication failed.';
+      res.status(404);
+      res.end();
     }
     if(err){
       req.session.regenerate(function(){
-        req.session.msg = err;
-        res.redirect('/login');
+        res.status(404);
+        res.end();
       });
     }
   });
