@@ -14,20 +14,20 @@ angular.module('app', [])
       "<div class='inner_container'>"+
         "<textarea id=" + sticky._id+"text"+ " class='content'>" + sticky.text + "</textarea>"+
         "<div class='footer'>"+
-        "<button id="+sticky._id+"button" + ">Save</button>" + 
-        "<button id="+sticky._id+"delButton" + " class='deleteButton' >Delete</button>" + 
+        //"<button id="+sticky._id+"button" + ">Save</button>" + 
+        "<button id="+sticky._id+"delButton" + " class='deleteButton' >  X </button>" + 
         "</div>"+
         "</div>" +
       "</div>");
 
       $('#'+sticky._id+"button").css({'visibility': 'hidden'});
       $('#'+sticky._id+"delButton").css({'visibility': 'hidden'});
-      $('#'+sticky._id+"button").click(function(){
+      $('#'+sticky._id+"text").bind('input propertychange', function() {
         $scope.updateText(sticky._id, $('#'+sticky._id+"text").val());
         $('#'+sticky._id+"button").css({'visibility': 'hidden'});
         $('#'+sticky._id+"delButton").css({'visibility': 'hidden'});
       });
-      $('#'+sticky._id+"text").click(function(){
+      $('#'+sticky._id+"text").dblclick(function(){
         $('#'+sticky._id+"button").css({'visibility': 'visible'}); // ON Edit enable save button
         $('#'+sticky._id+"delButton").css({'visibility': 'visible'}); // ON Edit enable save button
       });
